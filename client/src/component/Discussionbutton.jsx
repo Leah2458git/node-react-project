@@ -58,8 +58,8 @@ const DiscussionButton = (props) => {
             <div className="discussion-content">
                 <InputTextarea
                     autoResize
-                    value={`Created by: ${props?.discussion?.userId?.name || ''}\t\t\t\t\tUpdated at: ${date || ''}\t\t\t\t\tName: ${props?.discussion?.discussionName || ''}`}
-                    style={{ fontSize: "14pt", width: '100%' }}
+                    value={`נוצר ע"י: ${props?.discussion?.userId?.name || ''}\t\t\t\t\tעודכן ב: ${date || ''}\t\t\t\t\tשם הדיון: ${props?.discussion?.discussionName || ''}`}
+                    style={{ fontSize: "14pt", width: '100%' ,direction:'rtl'}}
                     onClick={onClickButton}
                 />
             </div>

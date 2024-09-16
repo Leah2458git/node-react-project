@@ -30,13 +30,22 @@ const Dialogbutton = (props) => {
         }
     }, [show, navigate, props.dialogue]);
 
+    const roles = [
+        { name: 'רענון', code: 'refresh' },
+        { name: 'זינוק', code: 'leap' },
+        { name: 'וארשתיך', code: 'engaged' }
+    ];
+
+    const originalRole=props.dialogue?.userId?.roles
+    let role = roles.find(role => role.code === originalRole);
+    role=role.name
     return (
         <RefetchProvider value={props.refetch}>
             <div style={{ borderColor: 'white' }}>
                 <InputTextarea
                     autoResize
-                    value={`created by: ${props?.dialogue?.userId?.name}, ${props.dialogue?.userId?.roles}\t\t\t\t\tupdated at:${date}\t\t\t\t\t\t\t${props.dialogue.dialogueName}`}
-                    style={{ width: '80%' }}
+                    value={`נוצר ע"י: ${props?.dialogue?.userId?.name}, ${role}\t\t\t\t\tעודכן ב:${date}\t\t\t\t\t\t\tשם הדיון: ${props.dialogue.dialogueName}`}
+                    style={{ width: '80%',direction:"rtl" }}
                     onClick={onClickButton}
                 />
             </div>

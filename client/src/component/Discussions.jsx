@@ -32,12 +32,12 @@ const Discussions = () => {
     }, [])
     
 
-    useEffect(() => {
-    if (refe) {
+//     useEffect(() => {
+//     if (refe) {
         
-        navigate(`/discussionButton`, { state: { discussion: discussion, name: discussion?.userId?.name } })
-    }
-}, [])
+//         navigate(`/showDiscussion`, { state: { discussion: discussion, name: discussion?.userId?.name } })
+//     }
+// }, [])
 
 
     return (

@@ -49,39 +49,65 @@ const ShowDialogue = () => {
         <div style={{ width: '100%', alignItems: 'center' }}>
             <br /><br /><br />
             {dialogueData?.map((element, index) => (
-                <Card
-                    key={index}
-                    title={element.name}
-                    style={{
-                        textAlign: determineDirection(element.message) === 'rtl' ? 'right' : 'left',
-                        backgroundColor: element.userId === _id ? 'white' : 'rgb(171, 231, 203)',
-                        color: 'black',
-                        marginLeft: element.userId === _id ? '40%' : '0',
-                        marginRight: element.userId !== _id ? '40%' : '0',
-                        marginTop: "10px",
-                        borderRadius: '10px',
-                        wordWrap: 'break-word',
-                        whiteSpace: 'pre-wrap',
-                        direction: determineDirection(element.message),
-                        unicodeBidi: 'plaintext'
-                    }}
-                >
-                    {element.message}
-                </Card>
-            ))}
+            <Card
+                key={index}
+                title={element.name}
+                style={{
+                    textAlign: determineDirection(element.message) === 'rtl' ? 'right' : 'left',
+                    backgroundColor: element.userId === _id ? 'white' : 'rgb(171, 231, 203)',
+                    color: 'black',
+                    marginLeft: element.userId === _id ? 'auto' : '30%',
+                    marginRight: element.userId !== _id ? 'auto' : '30%',
+                    marginTop: "10px",
+                    borderRadius: '10px',
+                    wordWrap: 'break-word',
+                    whiteSpace: 'pre-wrap',
+                    direction: determineDirection(element.message),
+                    unicodeBidi: 'plaintext',
+                    width: '25%',
+                    height: '10%'
+                }}
+            >
+                {element.message}
+            </Card>
+        ))}
+
             <br />
+           
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <InputTextarea
                 value={buttonValue}
                 onChange={(e) => setButtonValue(e.target.value)}
                 onKeyDown={handleKeyDown}
                 dir='rtl'
                 placeholder='תגובה'
-                rows={5}
-                cols={30}
-                style={{ whiteSpace: 'pre-wrap' }}
+                rows={3}
+                cols={20}
+                style={{ 
+                    width: '60%',
+                    padding: '8px',
+                    borderRadius: '5px',
+                    border: '1px solid #ccc',
+                    marginBottom: '10px',
+                    whiteSpace: 'pre-wrap',
+                }}
             />
-            <br />
-            <button onClick={sendMessage} style={{ width: '150px', height: '30px' }}>שלח</button>
+            <button 
+                onClick={sendMessage} 
+                style={{ 
+                    width: '150px', 
+                    height: '30px',
+                    backgroundColor: 'rgb(171, 231, 203)',
+                    color: 'black',
+                    border: 'none',
+                    borderRadius: '5px',
+                    cursor: 'pointer',
+                }}
+            >
+                שלח
+            </button>
+        </div>
+
         </div>
     );
 };

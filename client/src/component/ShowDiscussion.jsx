@@ -21,6 +21,7 @@ const ShowDiscussion = () => {
     };
 
     useEffect(() => {
+        console.log(isSuccess)
         if (isSuccess) {
             navigate('/discussions', { state: { refe: 'true', discussion: data } });
         }
@@ -41,41 +42,68 @@ const ShowDiscussion = () => {
     return (
         <div style={{ width: '100%', alignItems: 'center' }}>
             <br /><br /><br />
-            {discussion.discussion.map((element, index) => (
-                <Card
-                    key={index}
-                    title={element.name}
-                    style={{
-                        textAlign: determineDirection(element.message) === 'rtl' ? 'right' : 'left',
-                        marginTop: "10px",
-                        borderRadius: '10px',
-                        direction: determineDirection(element.message),
-                        width: '70%',
-                        backgroundColor:'rgb(171, 231, 203)',
-                        color: '#1f2937',
-                        marginLeft: '15%',
-                        wordWrap: 'break-word',
-                        whiteSpace: 'pre-wrap',
-                        unicodeBidi: 'plaintext'
-                    }}
-                >
-                    {element.message}
-                </Card>
-            ))}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        {discussion.discussion.map((element, index) => (
+            <Card
+                key={index}
+                title={element.name}
+                style={{
+                    textAlign: determineDirection(element.message) === 'rtl' ? 'right' : 'left',
+                    marginTop: "10px",
+                    borderRadius: '10px',
+                    direction: determineDirection(element.message),
+                    width: '70%',
+                    backgroundColor: 'rgb(171, 231, 203)',
+                    color: '#1f2937',
+                    wordWrap: 'break-word',
+                    whiteSpace: 'pre-wrap',
+                    unicodeBidi: 'plaintext',
+                    width: '25%',
+                    height: '10%',
+                }}
+            >
+                {element.message}
+            </Card>
+        ))}
+        </div>
+
             <br />
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <InputTextarea
                 value={buttonValue}
                 onChange={(e) => setButtonValue(e.target.value)}
                 onKeyDown={handleKeyDown}
                 dir='rtl'
                 placeholder='תגובה'
-                rows={5}
-                cols={30}
-                style={{ whiteSpace: 'pre-wrap' }}
+                rows={3}
+                cols={20}
+                style={{ 
+                    width: '60%',
+                    padding: '8px',
+                    borderRadius: '5px',
+                    border: '1px solid #ccc',
+                    marginBottom: '10px',
+                    whiteSpace: 'pre-wrap',
+                }}
             />
-            <br />
-            <button onClick={sendMessage} style={{ width: '150px', height: '30px' }}>שלח</button>
+            <button 
+                onClick={sendMessage} 
+                style={{ 
+                    width: '150px', 
+                    height: '30px',
+                    backgroundColor: 'rgb(171, 231, 203)',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '5px',
+                    cursor: 'pointer',
+                }}
+            >
+                שלח
+            </button>
         </div>
+
+        </div>
+       
     );
 };
 
